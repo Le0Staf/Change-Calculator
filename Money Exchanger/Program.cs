@@ -5,6 +5,15 @@ double price = Convert.ToDouble(Console.ReadLine());
 
 Console.WriteLine("Enter what you pay: ");
 double payment = Convert.ToDouble(Console.ReadLine());
+double shortof = 0;
+
+if (payment < price)
+{
+    shortof = price - payment;
+    Console.WriteLine("You are short of: $" + shortof);
+    Console.WriteLine("Add money: ");
+    payment = payment + Convert.ToDouble(Console.ReadLine());
+}
 
 double moneyBack = payment - price;
 Console.WriteLine("Money Back: $" + moneyBack);
