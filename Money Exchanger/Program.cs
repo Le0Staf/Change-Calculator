@@ -2,7 +2,6 @@
 
 namespace MoneyExchanger
 {
-
     class Program
     {
         static void Main()
@@ -44,6 +43,5 @@ namespace MoneyExchanger
             }
         }
     }
-
 }
 
