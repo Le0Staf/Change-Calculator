@@ -1,16 +1,16 @@
 ﻿using System;
 
-Console.WriteLine("Enter Price: ");
+Console.WriteLine("Enter Price Of Product: ");
 double price = Convert.ToDouble(Console.ReadLine());
 
 Console.WriteLine("Enter what you pay: ");
 double payment = Convert.ToDouble(Console.ReadLine());
-double shortof = 0;
+double shortof;
 
 if (payment < price)
 {
     shortof = price - payment;
-    Console.WriteLine("You are short of: $" + shortof);
+    Console.WriteLine("Here is your change: $" + shortof);
     Console.WriteLine("Add money: ");
     payment = payment + Convert.ToDouble(Console.ReadLine());
 }
@@ -19,61 +19,19 @@ double moneyBack = payment - price;
 Console.WriteLine("Money Back: $" + moneyBack);
 
 Console.WriteLine("Here is your change: ");
-int hundreds = 0;
-int fifties = 0;
-int twenties = 0;
-int tens = 0;
-int fives = 0;
-int twos = 0;
-int ones = 0;
 
-while (moneyBack >= 100)
+//Calculate
+int[] bills = { 100, 50, 20, 10, 5, 2, 1 };
+int[] counts = new int[7];
+
+for (int i = 0; i < bills.Length; i++)
 {
-    hundreds = hundreds + 1; 
-    moneyBack = moneyBack - 100;
+    counts[i] = (int)moneyBack / bills[i];
+    moneyBack %= bills[i];
 }
 
-while (moneyBack >= 50 && moneyBack < 100)
+//Output Change
+for (int i = 0; i < bills.Length; i++)
 {
-    fifties = fifties + 1;
-    moneyBack = moneyBack - 50;
+    Console.WriteLine("$" + bills[i] + " Bills: " + counts[i]);
 }
-
-while (moneyBack >= 20 && moneyBack < 50)
-{
-    twenties = twenties + 1;
-    moneyBack = moneyBack - 20;
-}
-
-while (moneyBack >= 10 && moneyBack < 20)
-{
-    tens = tens + 1;
-    moneyBack = moneyBack - 10;
-}
-
-while (moneyBack >= 5 && moneyBack < 10)
-{
-    fives = fives + 1;
-    moneyBack = moneyBack - 5;
-}
-
-while (moneyBack >= 2 && moneyBack < 5)
-{
-    twos = twos + 1;
-    moneyBack = moneyBack - 2;
-}
-
-while (moneyBack >= 1 && moneyBack < 2)
-{
-    ones = ones + 1;
-    moneyBack = moneyBack - 1;
-}
-
-
-Console.WriteLine("$100 Bills: " + hundreds);
-Console.WriteLine("$50 Bills: " + fifties);
-Console.WriteLine("$20 Bills: " + twenties);
-Console.WriteLine("$10 Bills: " + tens);
-Console.WriteLine("$5 Bills: " + fives);
-Console.WriteLine("$2 Bills: " + twos);
-Console.WriteLine("$1 Bills: " + ones);
